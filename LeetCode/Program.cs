@@ -17,6 +17,15 @@ namespace LeetCode
             */
             #endregion
 
+            #region 143 Reorder List
+            /*var head = new ListNode(1);
+            head.next = new ListNode(2);
+            head.next.next = new ListNode(3);
+            head.next.next.next = new ListNode(4);
+
+            ReorderList(head);*/
+            #endregion
+
             #region 191 Number of 1 Bits
             //Console.WriteLine("191: " + HammingWeight(00000000000000000000000000001011));
             //Console.WriteLine("191: " + HammingWeight(0x00000000000000000000000000000010));
@@ -56,6 +65,79 @@ namespace LeetCode
             var min = numberCount.Aggregate((l, r) => l.Value < r.Value ? l : r).Key;
 
             return min;
+        }
+        #endregion
+
+        #region 143
+        /* 
+         * Given a singly linked list L: L0→L1→…→Ln-1→Ln, reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+         * You must do this in-place without altering the nodes' values.
+         * For example,
+         * Given {1,2,3,4}, reorder it to {1,4,2,3}.
+         */        
+        static public void ReorderList(ListNode head)
+        {
+            if (head != null && head.next != null)
+            {
+                //split in to two lists
+                //1.find middle of list to get start of next list
+                var slow = head;
+                var fast = head;
+
+                while (slow.next != null && fast.next != null && fast.next.next != null)
+                {
+                    slow = slow.next;
+                    fast = fast.next.next;
+                }
+
+                //2.split lists
+                var second = slow.next;
+                slow.next = null; //end first
+
+                //reverse second list
+                var prev = second;
+                var current = second.next;
+                while (current != null)
+                {
+                    var temp = current.next;
+                    current.next = prev;
+                    prev = current;
+                    current = temp;
+                }
+
+                //set second.next to null as first element is now last
+                second.next = null;
+
+                //set new head for second
+                second = prev;
+
+                //merge lists
+                var l1 = head;
+                var l2 = second;
+
+                while (l2 != null)
+                {
+                    var temp1 = l1.next;
+                    var temp2 = l2.next;
+
+                    l1.next = l2;
+                    l2.next = temp1;
+
+                    l1 = temp1;
+                    l2 = temp2;
+                }
+            }
+        }
+        
+        public class ListNode
+        {
+            public int val;
+            public ListNode next;
+            public ListNode(int x)
+            {
+                val = x;
+                next = null;
+            }
         }
         #endregion
 
