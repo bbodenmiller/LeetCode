@@ -23,14 +23,14 @@ namespace LeetCode
             #endregion
 
             #region 111 Minimum Depth of Binary Tree
-            TreeNode tree = new TreeNode(1);
+            /*TreeNode tree = new TreeNode(1);
             tree.left = new TreeNode(2);
-            //tree.right = new TreeNode(4);
-            //tree.right.right = new TreeNode(2);
-            //tree.right.right.left = new TreeNode(8);
-            //tree.right.left = new TreeNode(40);
+            tree.right = new TreeNode(4);
+            tree.right.right = new TreeNode(2);
+            tree.right.right.left = new TreeNode(8);
+            tree.right.left = new TreeNode(40);
 
-            var minDepthofBinaryTree = MinDepth(tree);
+            var minDepthofBinaryTree = MinDepth(tree);*/
             #endregion
 
             #region 136 Single Number
