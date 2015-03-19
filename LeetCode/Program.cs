@@ -137,7 +137,7 @@ namespace LeetCode
          * You must do this in-place without altering the nodes' values.
          * For example,
          * Given {1,2,3,4}, reorder it to {1,4,2,3}.
-         */        
+         */
         static public void ReorderList(ListNode head)
         {
             if (head != null && head.next != null)
@@ -191,7 +191,7 @@ namespace LeetCode
                 }
             }
         }
-        
+
         public class ListNode
         {
             public int val;
@@ -214,10 +214,11 @@ namespace LeetCode
         {
             //from http://stackoverflow.com/a/109915/1233435
             int count = 0;
-            while (n > 0) {           // until all bits are zero
+            while (n > 0)
+            {           // until all bits are zero
                 if ((n & 0x01) == 1)     // check lower bit
                     count++;
-                n = n>>1;              // shift right bits, removing lower bit - see https://en.wikipedia.org/wiki/Bitwise_operation#Logical_shift
+                n = n >> 1;              // shift right bits, removing lower bit - see https://en.wikipedia.org/wiki/Bitwise_operation#Logical_shift
             }
             return count;
 
