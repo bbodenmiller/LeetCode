@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,17 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
+            #region sum of tree paths
+            /*BinaryTreeNode tree = new BinaryTreeNode(1);
+            tree.left = new BinaryTreeNode(2);
+            tree.right = new BinaryTreeNode(4);
+            tree.right.right = new BinaryTreeNode(2);
+            tree.right.right.left = new BinaryTreeNode(8);
+            tree.right.left = new BinaryTreeNode(40);
+
+            var temp = SumofTreePaths(tree);*/
+            #endregion
+
             #region 136 Single Number
             /*var numbers = new int[] {1, 2, 2, 3, 3, 4, 4, 5, 5};
 
@@ -35,6 +47,57 @@ namespace LeetCode
             Console.WriteLine("Press any key to close...");
             Console.ReadLine();
         }
+
+        #region sum of tree paths
+        public class BinaryTreeNode
+        {
+            public int val;
+            public BinaryTreeNode left;
+            public BinaryTreeNode right;
+
+            public BinaryTreeNode(int x)
+            {
+                val = x;
+                left = null;
+                right = null;
+            }
+        }
+
+        /*
+         * Calculate the sum of all numbers formed by paths from root to leaf.
+         */
+        public static ArrayList results = new ArrayList();
+        public static int count = 0;
+
+        public static ArrayList SumofTreePaths(BinaryTreeNode node)
+        {
+            if (node == null)
+            {
+                return results;
+            }
+
+            count += node.val;
+
+            if (node.left == null && node.right == null)
+            {
+                results.Add(count);
+            }
+
+            if (node.left != null)
+            {
+                SumofTreePaths(node.left);
+            }
+
+            if (node.right != null)
+            {
+                SumofTreePaths(node.right);
+            }
+
+            count -= node.val;
+
+            return results;
+        }
+        #endregion
 
         #region 136
         /*
