@@ -10,23 +10,25 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            //136 Single Number
+            #region 136 Single Number
             /*var numbers = new int[] {1, 2, 2, 3, 3, 4, 4, 5, 5};
 
             SingleNumber(numbers);
             */
+            #endregion
 
-            //191 Number of 1 Bits
+            #region 191 Number of 1 Bits
             //Console.WriteLine("191: " + HammingWeight(00000000000000000000000000001011));
-            Console.WriteLine("191: " + HammingWeight(0x00000000000000000000000000000010));
-
+            //Console.WriteLine("191: " + HammingWeight(0x00000000000000000000000000000010));
+            #endregion
 
             Console.WriteLine("");
             Console.WriteLine("Press any key to close...");
             Console.ReadLine();
         }
 
-        /* 136
+        #region 136
+        /*
          * Given an array of integers, every element appears twice except for one. Find that single one.
          * 
          * Note: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
@@ -55,8 +57,10 @@ namespace LeetCode
 
             return min;
         }
+        #endregion
 
-        /* 191
+        #region 191
+        /* 
          * Write a function that takes an unsigned integer and returns the number of ’1' bits it has (also known as the Hamming weight).
          * 
          * For example, the 32-bit integer ’11' has binary representation 00000000000000000000000000001011, so the function should return 3.
@@ -86,5 +90,6 @@ namespace LeetCode
 
             return count2;
         }
+        #endregion
     }
 }
