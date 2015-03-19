@@ -12,7 +12,7 @@ namespace LeetCode
         static void Main(string[] args)
         {
             #region remove all 'b's and duplicate all 'a's
-            var strResult = TweakString("Bob had a lot of artichokes");
+            //var strResult = TweakString("Bob had a lot of artichokes");
             #endregion
 
             #region sum of tree paths
