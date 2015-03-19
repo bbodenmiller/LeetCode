@@ -22,6 +22,17 @@ namespace LeetCode
             var temp = SumofTreePaths(tree);*/
             #endregion
 
+            #region 111 Minimum Depth of Binary Tree
+            TreeNode tree = new TreeNode(1);
+            tree.left = new TreeNode(2);
+            //tree.right = new TreeNode(4);
+            //tree.right.right = new TreeNode(2);
+            //tree.right.right.left = new TreeNode(8);
+            //tree.right.left = new TreeNode(40);
+
+            var minDepthofBinaryTree = MinDepth(tree);
+            #endregion
+
             #region 136 Single Number
             /*var numbers = new int[] {1, 2, 2, 3, 3, 4, 4, 5, 5};
 
@@ -96,6 +107,69 @@ namespace LeetCode
             count -= node.val;
 
             return results;
+        }
+        #endregion
+
+        #region 111 Minimum Depth of Binary Tree
+        public class TreeNode
+        {
+            public int val;
+            public TreeNode left;
+            public TreeNode right;
+            public TreeNode(int x) { val = x; }
+        }
+
+        public static int MinDepth(TreeNode root)
+        {
+            int min = 0;
+            int minLeft = -1;
+            int minRight = -1;
+            int minChild = 0;
+
+            if (root==null)
+            {
+                return min;
+            }
+            else
+            {
+                min++;
+            }
+
+            //if (root.left == null && root.right == null)
+            //{
+            //    return min;
+            //}
+            //else
+            //{
+            //    return min + Math.Min(MinDepth(root.left), MinDepth(root.right));
+            //}
+
+            //get min depth of children trees
+            if (root.left != null)
+            {
+                minLeft = MinDepth(root.left);
+            }
+
+            if (root.right != null)
+            {
+                minRight = MinDepth(root.right);
+            }
+
+            //find smallest child that exists
+            if (minLeft > 0 && minRight > 0)
+            {
+                minChild = Math.Min(minLeft, minRight);
+            }
+            else if (minLeft > 0)
+            {
+                minChild = minLeft;
+            }
+            else if (minRight > 0)
+            {
+                minChild = minRight;
+            }
+
+            return min + minChild;
         }
         #endregion
 
