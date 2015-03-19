@@ -11,6 +11,10 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
+            #region remove all 'b's and duplicate all 'a's
+            var strResult = TweakString("Bob had a lot of artichokes");
+            #endregion
+
             #region sum of tree paths
             /*BinaryTreeNode tree = new BinaryTreeNode(1);
             tree.left = new BinaryTreeNode(2);
@@ -58,6 +62,32 @@ namespace LeetCode
             Console.WriteLine("Press any key to close...");
             Console.ReadLine();
         }
+
+        #region remove all 'b's and duplicate all 'a's
+        //but only lowercase ones
+        static public String TweakString(String str){
+            if (str == null || str.Length == 0)
+            {
+                return str;
+            }
+
+            StringBuilder result = new StringBuilder();
+
+            foreach (var character in str)
+            {
+                if (!character.Equals('b'))
+                {
+                    result.Append(character);
+                    if (character.Equals('a'))
+                    {
+                        result.Append(character);
+                    }
+                }
+            }
+
+            return result.ToString();
+        }
+        #endregion
 
         #region sum of tree paths
         public class BinaryTreeNode
