@@ -11,6 +11,15 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
+            #region print linked list in reverse
+            /*var head = new ListNode(1);
+            head.next = new ListNode(2);
+            head.next.next = new ListNode(3);
+            head.next.next.next = new ListNode(4);
+
+            PrintInReverse(head);*/
+            #endregion
+
             #region remove all 'b's and duplicate all 'a's
             //var strResult = TweakString("Bob had a lot of artichokes");
             #endregion
@@ -62,6 +71,19 @@ namespace LeetCode
             Console.WriteLine("Press any key to close...");
             Console.ReadLine();
         }
+
+        #region print linked list in reverse
+        static public void PrintInReverse(ListNode head)
+        {
+            if (head == null)
+            {
+                return;
+            }
+
+            PrintInReverse(head.next);
+            Console.WriteLine(head.val);
+        }
+        #endregion
 
         #region remove all 'b's and duplicate all 'a's
         //but only lowercase ones
