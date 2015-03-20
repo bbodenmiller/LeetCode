@@ -87,7 +87,8 @@ namespace LeetCode
 
         #region remove all 'b's and duplicate all 'a's
         //but only lowercase ones
-        static public String TweakString(String str){
+        static public String TweakString(String str)
+        {
             if (str == null || str.Length == 0)
             {
                 return str;
@@ -178,7 +179,7 @@ namespace LeetCode
             int minRight = -1;
             int minChild = 0;
 
-            if (root==null)
+            if (root == null)
             {
                 return min;
             }
