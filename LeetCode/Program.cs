@@ -11,6 +11,16 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
+            #region prefixes for every string
+            /*var test = new ArrayList();
+            test.Add("foo");
+            test.Add("foog");
+            test.Add("food");
+            test.Add("asdf");
+
+            ArrayList results = PrefixesForEveryString(test);*/
+            #endregion
+
             #region print linked list in reverse
             /*var head = new ListNode(1);
             head.next = new ListNode(2);
@@ -71,6 +81,77 @@ namespace LeetCode
             Console.WriteLine("Press any key to close...");
             Console.ReadLine();
         }
+
+        #region prefixes for every string
+        /*
+         * Given a set of strings, return the smallest subset that contains prefixes for every string.
+         * If the list is ['foo', 'foog', 'food', 'asdf'] return ['foo', 'asdf'] 
+         */
+        private static ArrayList PrefixesForEveryString(ArrayList strings)
+        {
+            ArrayList results = new ArrayList();
+
+            do
+            {
+                ArrayList temp = new ArrayList();
+
+                foreach (var item in strings)
+                {
+                    if (item.ToString().Substring(0, 1) == strings[0].ToString().Substring(0, 1))
+                    {
+                        temp.Add(item);
+                    }
+                }
+
+                if (temp.Count > 1)
+                {
+                    foreach (var item in temp)
+                    {
+                        strings.Remove(item);
+                    }
+
+                    //find longest common prefix
+                    results.Add(CommonPrefix(temp));
+                }
+                else
+                {
+                    //handle no commons
+                    results.Add(temp[0]);
+                    strings.Remove(temp[0]);
+                }
+            } while (strings.Count > 0);
+
+            return results;
+        }
+
+        private static String CommonPrefix(ArrayList strings)
+        {
+            String result = "";
+            int count = 0;
+            int length = 0;
+
+            do
+            {
+                length++;
+                count = 0;
+                foreach (var item in strings)
+                {
+                    if (item.ToString().Length < length || strings[0].ToString().Length < length)
+                    {
+                        break;
+                    }
+                    if (item.ToString().Substring(0, length) == strings[0].ToString().Substring(0, length))
+                    {
+                        count++;
+                    }
+                }
+            } while (count == strings.Count);
+
+            result = strings[0].ToString().Substring(0, length - 1);
+
+            return result;
+        }
+        #endregion
 
         #region print linked list in reverse
         static public void PrintInReverse(ListNode head)
