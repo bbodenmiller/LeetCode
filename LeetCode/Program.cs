@@ -15,7 +15,6 @@ namespace LeetCode
             /*var test = new int[10] { 1, 2, 0, 4, 5, 0, 0, 0, 2, 1 };
 
             var result = putZerosAtEnd(test);*/
-
             #endregion
 
             #region prefixes for every string
@@ -495,7 +494,7 @@ namespace LeetCode
             }
             return count;
 
-            //lazy solution - convert to string
+            //lazy solution - convert to string - likely broken
             String strn = n.ToString();
 
             int count2 = 0;
