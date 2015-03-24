@@ -11,6 +11,13 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
+            #region move all 0s to right end
+            /*var test = new int[10] { 1, 2, 0, 4, 5, 0, 0, 0, 2, 1 };
+
+            var result = putZerosAtEnd(test);*/
+
+            #endregion
+
             #region prefixes for every string
             /*var test = new ArrayList();
             test.Add("foo");
@@ -81,6 +88,64 @@ namespace LeetCode
             Console.WriteLine("Press any key to close...");
             Console.ReadLine();
         }
+
+        #region move all 0s to right end
+        private static int[] putZerosAtEnd(int[] test)
+        {
+            int count = 0;
+            
+            for (int i = 0; i < test.Length; i++)
+            {
+                if (test[i] != 0)
+                {
+                    test[count] = test[i];
+                    count++;
+                }                
+            }
+
+            while (count < test.Length)
+            {
+                test[count] = 0;
+                count++;
+            }
+
+            return test;
+
+            //original solution
+            int lastNonzeroIndex = getLastNonzeroIndex(test);
+
+            for (int i = 0; i < test.Length && i < lastNonzeroIndex; i++)
+            {
+                if (test[i] == 0)
+                {
+                    var temp = test[i];
+                    test[i] = test[lastNonzeroIndex];
+                    test[lastNonzeroIndex] = temp;
+                    lastNonzeroIndex = getLastNonzeroIndex(test);
+                }
+            }
+
+            return test;
+        }
+
+        private static int getLastNonzeroIndex(int[] test)
+        {
+            if (test == null)
+            {
+                return -1;
+            }
+
+            int lastNonzeroIndex = test.Length - 1;
+
+            //find last index with non-zero
+            while (test[lastNonzeroIndex] == 0 && lastNonzeroIndex > -1)
+            {
+                lastNonzeroIndex--;
+            }
+
+            return lastNonzeroIndex;
+        }
+        #endregion
 
         #region prefixes for every string
         /*
